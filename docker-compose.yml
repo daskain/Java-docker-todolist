@@ -1,0 +1,16 @@
+version: '2'
+services:
+  app:
+    depends_on:
+      - db
+    build: .
+    ports:
+      - "8080:8080"
+  db:
+    image: postgres
+    volumes:
+      - ./mounts/db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: todo
