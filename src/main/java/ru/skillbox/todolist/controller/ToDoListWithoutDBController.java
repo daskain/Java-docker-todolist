@@ -41,7 +41,7 @@ public class ToDoListWithoutDBController {
     public CompletableFuture<ResponseEntity> insert(@RequestBody List<ToDoListPoJo> toDoListPoJo) {
         return CompletableFuture.runAsync(() -> {
             for (ToDoListPoJo element : toDoListPoJo) {
-                toDoListPoJoHashMap.put(toDoListPoJo.size(), element);
+                toDoListPoJoHashMap.put(element.getId(), element);
             }
         }).<ResponseEntity>thenApply(ResponseEntity::ok)
                 .exceptionally(throwable -> {
