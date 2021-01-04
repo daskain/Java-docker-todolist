@@ -7,9 +7,9 @@ COPY . /tmp/code/
 WORKDIR /tmp/code/
 
 RUN mvn clean --batch-mode --no-transfer-progress; \
-	mvn package -DskipTests --batch-mode --mo-transfer-progress
+	mvn package -DskipTests --batch-mode --no-transfer-progress
 
-RUN mkdir /code/; cp /tmp/code/target/todolist/todolist-1.jar /code/.
+RUN mkdir /code/; cp /tmp/code/target/todolist-1.jar /code/.
 
 WORKDIR /code/
 ENTRYPOINT ["java", "-jar", "todolist-1.jar"]
